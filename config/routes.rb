@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   get "/all_products" => "products#all_products"
 
-  get "/all_products/:price" => "products#all_products"
+  get "/all_products/:price" => "products#one_price"
 
 end
