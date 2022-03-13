@@ -1,19 +1,43 @@
 class ProductsController < ApplicationController
-
-  def one_product
-    one_product = Product.first
-    render json: one_product.as_json
-  end
   
-  def all_products
+  def index
     all_products = Product.all
     render json: all_products.as_json
   end
-  
-  def one_price
-    product_price = params[:price]
-    product_name = Product.find_by(price: product_price)
-    render json: {this_is_the_product: product_name}
+
+  def create
+    product = Product.new(
+      name: params["name"],
+      price: params["price"],
+      description: params["description"],
+      image_url: params["image_url"]
+    )
+    product.save
+    render json: product.as_json
   end
 
+  def show
+    one_product = Product.find_by(id: params["id"])
+    render json: one_product.as_json
+  end
+
+  def update
+    product_id = params["id"]
+    product = Product.find(product_id)
+
+    product.name = params["name"] || product.name
+    product.price = params["price"] || product.price
+    product.description = params["description"] || product.description
+    product.image_url = params["image_url"] || product.image_url
+
+    product.save
+    render json: product.as_json
+  end
+
+  def destroy
+    product_id = params["id"]
+    product = Product.find_by(id: product_id)
+    product.destroy
+    render json: {message: "This product has been destroyed!"}
+  end
 end
