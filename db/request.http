@@ -5,7 +5,7 @@ GET http://localhost:3000/products
 GET http://localhost:3000/products/
 
 ### Product Create
-POST http://localhost:3000/products
+POST http://localhost:3000/products/
 Content-Type: application/json
 
 {
@@ -20,4 +20,7 @@ PATCH http://localhost:3000/products/
 Content-Type: application/json
 
 ### Product Destroy
-DELETE http://localhost:3000/products/5
+DELETE http://localhost:3000/products/7
+
+### Supplier Index
+GET http://localhost:3000/suppliers

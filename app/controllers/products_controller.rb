@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   
   def index
     all_products = Product.all
-    render json: all_products.as_json
+    render json: all_products
   end
 
   def create
@@ -12,13 +12,17 @@ class ProductsController < ApplicationController
       description: params["description"],
       image_url: params["image_url"]
     )
-    product.save
-    render json: product.as_json
+  if product.save #happy path
+    render json: product
+  else #sad path
+    render json: {error_messages: product.errors.full_messages}, status: 422
+  end
+
   end
 
   def show
     one_product = Product.find_by(id: params["id"])
-    render json: one_product.as_json(methods: [:is_discounted?, :tax, :total])
+    render json: one_product
   end
 
   def update
@@ -30,8 +34,11 @@ class ProductsController < ApplicationController
     product.description = params["description"] || product.description
     product.image_url = params["image_url"] || product.image_url
 
-    product.save
-    render json: product.as_json
+    if product.save #happy path
+      render json: product
+    else #sad path
+      render json: {error_messages: product.errors.full_messages}, status: 422
+    end
   end
 
   def destroy
