@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
     product = Product.new(
       name: params["name"],
       price: params["price"],
-      description: params["description"],
-      image_url: params["image_url"]
+      description: params["description"]
     )
   if product.save #happy path
     render json: product
@@ -21,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    one_product = Product.find_by(id: params["id"])
+    one_product = Product.find(params[:id])
     render json: one_product
   end
 
@@ -32,7 +31,7 @@ class ProductsController < ApplicationController
     product.name = params["name"] || product.name
     product.price = params["price"] || product.price
     product.description = params["description"] || product.description
-    product.image_url = params["image_url"] || product.image_url
+    
 
     if product.save #happy path
       render json: product
