@@ -45,3 +45,21 @@ Content-Type: application/json
   "email": "test@test.com",
   "password": "password"
 }
+
+### Orders create
+POST http://localhost:3000/orders
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "product_id": 2,
+  "quantity": 1
+}
+
+### Orders show
+GET http://localhost:3000/orders/1
+Authorization: Bearer {{jwt}}
+
+### Order Index
+GET http://localhost:3000/orders/
+
