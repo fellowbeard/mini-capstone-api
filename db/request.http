@@ -1,3 +1,5 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDgyNTczMzd9.exir9CjoUloVvoO9thUlTAkD1k61IlQd8-SIOWZ_F-8
+
 ### Product Index
 GET http://localhost:3000/products
 
@@ -63,3 +65,19 @@ Authorization: Bearer {{jwt}}
 ### Order Index
 GET http://localhost:3000/orders/
 
+### CartedProduct Create
+POST http://localhost:3000/carted_products/
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "product_id": "2",
+  "quantity": "1",
+  
+  "status": ""
+}
+
+### CartedProducts Index
+GET http://localhost:3000/products
+Authorization: Bearer {{jwt}}
+Content-Type: application/json

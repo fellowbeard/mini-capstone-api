@@ -3,5 +3,5 @@ class User < ApplicationRecord
 validates :email, presence: true, uniqueness: true
 
 has_many :orders
-has_many :products
+has_many :carted_products
 end
