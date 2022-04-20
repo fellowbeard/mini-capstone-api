@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
   
   def index
     products = Product.all
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   if product.save #happy path
     render json: product
   else #sad path
-    render json: {error_messages: product.errors.full_messages}, status: 422
+    render json: {error_messages: product.errors.full_messages, params: params}, status: 422
   end
 
   end
