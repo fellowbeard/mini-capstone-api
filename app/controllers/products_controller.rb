@@ -3,14 +3,14 @@ class ProductsController < ApplicationController
   
   def index
     products = Product.all
-    render json:products
+    render json: products
   end
 
   def create
     product = Product.new(
-      name: params["name"],
-      price: params["price"],
-      description: params["description"]
+      name: params[:name],
+      price: params[:price],
+      description: params[:description]
     )
   if product.save #happy path
     render json: product
