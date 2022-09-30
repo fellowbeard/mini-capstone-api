@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTA1ODQyNjR9.mkyqbnFmbwv_qrl5rlg-YW0pghGisC9zFAHhXwlOVPg
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjQ1ODIwNTJ9.I3tIrEdbUxNjzJQWadazutZwigMNKthqHHg4vBdOMps
 
 ### Product Index
 GET http://localhost:3000/products
@@ -33,8 +33,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "Test name",
-  "email": "test@test.com",
+  "name": "Beardy",
+  "email": "virgovibe+minitest12@gmail.com",
   "password": "password",
   "password_confirmation": "password"
 }
